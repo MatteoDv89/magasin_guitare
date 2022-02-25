@@ -32,10 +32,13 @@ $nbCorde = htmlspecialchars($_POST['corde']);
 
                         
                         if(isset($_FILES['image'])){
-                          
-                            $img = !empty($_FILES['image']) ? ($_FILES['image']['name']) : "No available img.";
+                         
+
+                            $img = ($_FILES['image']['name']) !== "" ? ($_FILES['image']['name']) : "No available img.";
 
                             if($img !== "No available img."){
+                                  
+
                                     
                                     if(move_uploaded_file($_FILES['image']['tmp_name'], "./images/".$_FILES['image']['name'])){
                                       
