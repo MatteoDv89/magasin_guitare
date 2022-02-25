@@ -16,6 +16,7 @@ $modele = htmlspecialchars($_POST['modele']);
 $annee = htmlspecialchars($_POST['annee']);
 $prix = htmlspecialchars($_POST['prix']);
 $type= htmlspecialchars($_POST['selector']);
+
  
 $nbCorde = htmlspecialchars($_POST['corde']);
 
@@ -28,11 +29,30 @@ $nbCorde = htmlspecialchars($_POST['corde']);
 
         if(!empty($fabricant) && !empty($modele) && !empty($annee) && !empty($prix) && !empty($type) && !empty($nbCorde)){
         
+
+                        
+                        if(isset($_FILES['image'])){
+                          
+                            $img = !empty($_FILES['image']) ? ($_FILES['image']['name']) : "No available img.";
+
+                            if($img !== "No available img."){
+                                    
+                                    if(move_uploaded_file($_FILES['image']['tmp_name'], "./images/".$_FILES['image']['name'])){
+                                      
+                                    }else{
+                                        echo " <div class='error-txt'>Une erreur est survenue!</div>";
+                                        die();
+                                    }
+
+                            }
+                        }
+
+
     
                         //let's insert data in users table
                         $time = time();
-                        $sql2 = $conn -> query( "INSERT INTO guitare_v2 (unique_id,fabricant_id,category_id,modele,annee,prix,nombre_corde)
-                                                     VALUES ({$time},'{$fabricant}','{$type}', '{$modele}', '{$annee}','{$prix}', '{$nbCorde}')");
+                        $sql2 = $conn -> query( "INSERT INTO guitare_v2 (unique_id,fabricant_id,category_id,modele,annee,prix,nombre_corde,image_name)
+                                                     VALUES ({$time},'{$fabricant}','{$type}', '{$modele}', '{$annee}','{$prix}', '{$nbCorde}', '{$img}')");
 
                         if($sql2){ //check if data inserted
                             $sql3 = $conn ->query( "SELECT * FROM guitare_v2 WHERE guitare_v2.unique_id = '{$time}'");

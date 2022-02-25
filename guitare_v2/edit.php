@@ -4,7 +4,7 @@
 <div class="wrapper">
     <section class="form signup">
         <header>Modifier guitare</header>
-        <form action='' method="post">
+        <form action='' enctype='multipart/form-data' method="post">
 
                 <?php include "php/update_error.php";
                 if(isset($_POST['product_unique_id'])){              
@@ -159,7 +159,27 @@
                     
                  
                 </div>
-               
+                <div class="field input">    
+                    <?php 
+                    
+                    if(isset($_POST['product_unique_id'])){
+
+                        
+                        if($row['image_name'] !== "No available img."){
+                            ?><img class='image_accueil' src="<?php echo "./images/".$row['image_name']?>" alt='apercu' /> <?php
+                            echo "<label> Changer l'image de l'article</label>";
+                            echo "<input type='file' name='image' id='image'/> ";
+                        }else{
+                            echo "<input type='text' readonly value='".$row['image_name']."' />";
+                            echo "<label> Changer l'image de l'article</label>";
+                            echo "<input type='file' name='image' id='image'/> ";
+                        }
+
+                    }
+                    ?>
+                            
+                    
+                </div>
                    
                  <div class="field button">                   
                     <input type="submit" value="Enregistrer">

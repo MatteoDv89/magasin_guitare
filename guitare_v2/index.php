@@ -4,6 +4,7 @@
 <table>
     <thead>
         <tr>
+            <td>Apercu</td>
             <td>Fabricant</td>
             <td>Modele</td>
             <td>Annee</td>
@@ -30,6 +31,14 @@
     <tr>
         
     <tr>
+        <td>
+            <?php if($result['image_name'] !== "No available img."){
+                echo "<img class='img_accueil' src='./images/".$result['image_name']."' alt='apercu guitare'/>";
+                }else{
+                    echo  $result['image_name'];
+                }
+            ?>
+        </td>
         <td>
             <?php echo $result['nom_fabricant']; ?>
         </td>

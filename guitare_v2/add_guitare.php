@@ -4,7 +4,7 @@
 <div class="wrapper">
     <section class="form signup">
         <header>Ajouter guitare</header>
-        <form action='' method="post">
+        <form action='' enctype='multipart/form-data' method="post">
 
                 <?php include "php/record_error.php"; ?> 
                  <div class="field input">
@@ -58,6 +58,11 @@
                     <label>Nombre de corde</label>
                     <input type="number" name="corde" required>
                 </div>
+                 <div class="field input">
+                    <label>Choissisez une image</label>
+                    <input type="file" name="image">
+                </div>
+
                    
                  <div class="field button">                   
                     <input type="submit" value="Enregistrer">

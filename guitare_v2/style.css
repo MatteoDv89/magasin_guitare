@@ -634,3 +634,13 @@ a{
     background-color: #fff;
     
 } 
+
+.img_accueil{
+    width: auto;
+    height: 42px;
+    inset: 0px;
+    object-fit: cover;
+    position:relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
